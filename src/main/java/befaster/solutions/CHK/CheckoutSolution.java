@@ -17,6 +17,10 @@ public class CheckoutSolution {
     }
 
     public Integer checkout(String skus) {
+
+        if (skus.isEmpty())
+            return 0;
+
         try {
             Map<Item, Integer> basketItems = parseSkus(skus);
             int[] total = new int[1];
@@ -29,12 +33,15 @@ public class CheckoutSolution {
 
     private Map<Item, Integer> parseSkus(String skus) throws Exception {
         Map<Item, Integer> basketItems = new HashMap<>();
-        String[] arrSkus = skus.replace(" ", "").split(",");
-        for (String sku : arrSkus)
-            if (sku.length() > 1 || !mapItems.containsKey(sku.charAt(0)))
+        char[] arrSkus = new char[skus.length()];
+        for (int i = 0; i < arrSkus.length; ++i)
+            arrSkus[i] = skus.charAt(i);
+
+        for (char sku : arrSkus)
+            if (!mapItems.containsKey(sku))
                 throw new Exception();
             else {
-                Item item = mapItems.get(sku.charAt(0));
+                Item item = mapItems.get(sku);
                 basketItems.computeIfPresent(item, (keyItem, amount) -> ++amount);
                 basketItems.putIfAbsent(item, 1);
             }
@@ -68,5 +75,6 @@ public class CheckoutSolution {
         int priceReduction;
     }
 }
+
 
 
