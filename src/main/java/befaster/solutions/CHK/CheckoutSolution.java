@@ -75,13 +75,13 @@ public class CheckoutSolution {
 
         int freeB = basketItems.get(mapItems.get('E')) == null ? 0 : basketItems.get(mapItems.get('E')) / 2;
         int freeF = basketItems.get(mapItems.get('F')) == null ? 0 : basketItems.get(mapItems.get('F')) / 3;
-        int freeN = basketItems.get(mapItems.get('N')) == null ? 0 : basketItems.get(mapItems.get('N')) / 3;
+        int freeM = basketItems.get(mapItems.get('N')) == null ? 0 : basketItems.get(mapItems.get('N')) / 3;
         int freeQ = basketItems.get(mapItems.get('R')) == null ? 0 : basketItems.get(mapItems.get('R')) / 3;
-        int freeU = basketItems.get(mapItems.get('U')) == null ? 0 : basketItems.get(mapItems.get('U')) / 3;
+        int freeU = basketItems.get(mapItems.get('U')) == null ? 0 : basketItems.get(mapItems.get('U')) / 4;
 
         basketItems.computeIfPresent(mapItems.get('B'), (item, integer) -> integer - freeB);
         basketItems.computeIfPresent(mapItems.get('F'), (item, integer) -> integer - freeF);
-        basketItems.computeIfPresent(mapItems.get('N'), (item, integer) -> integer - freeN);
+        basketItems.computeIfPresent(mapItems.get('M'), (item, integer) -> integer - freeM);
         basketItems.computeIfPresent(mapItems.get('Q'), (item, integer) -> integer - freeQ);
         basketItems.computeIfPresent(mapItems.get('U'), (item, integer) -> integer - freeU);
     }
@@ -125,4 +125,5 @@ public class CheckoutSolution {
         int[] priceReduction;
     }
 }
+
 
