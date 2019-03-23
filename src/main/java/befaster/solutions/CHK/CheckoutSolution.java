@@ -38,7 +38,7 @@ public class CheckoutSolution {
                 basketItems.putIfAbsent(item, 1);
                 basketItems.computeIfPresent(item, (keyItem, amount) -> ++amount);
             }
-
+        return basketItems;
     }
 
     @AllArgsConstructor
@@ -67,6 +67,3 @@ public class CheckoutSolution {
         int priceReduction;
     }
 }
-
-
-
