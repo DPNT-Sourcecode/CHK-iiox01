@@ -77,8 +77,8 @@ public class CheckoutSolution {
 
     private void calculateFreeItems(Map<Item, Integer> basketItems) {
 
-        int freeB = basketItems.get(mapItems.get('E')) / 2;
-        int freeF = basketItems.get(mapItems.get('F')) / 3;
+        int freeB = basketItems.get(mapItems.get('E')) == null ? 0 : basketItems.get(mapItems.get('E')) / 2;
+        int freeF = basketItems.get(mapItems.get('F')) == null ? 0 : basketItems.get(mapItems.get('F')) / 3;
 
         basketItems.computeIfPresent(mapItems.get('B'), (item, integer) -> integer - freeB);
         basketItems.computeIfPresent(mapItems.get('F'), (item, integer) -> integer - freeF);
@@ -120,3 +120,4 @@ public class CheckoutSolution {
         int[] priceReduction;
     }
 }
+
