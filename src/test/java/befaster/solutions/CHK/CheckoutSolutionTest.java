@@ -7,10 +7,12 @@ public class CheckoutSolutionTest {
     @Test
     public void checkoutTest() {
         CheckoutSolution checkoutSolution = new CheckoutSolution();
-        System.out.println(checkoutSolution.checkout("AAAAAAAAAEEBBB"));
-        assert checkoutSolution.checkout("AAAAAAAAAEEBBB") == 520;
+        String s = "AAAAAAAAAEEEEBBBC";
+        System.out.println(checkoutSolution.checkout(s));
+        assert checkoutSolution.checkout(s) == 380 + 160 + 30 + 20;
     }
 }
+
 
 
 
