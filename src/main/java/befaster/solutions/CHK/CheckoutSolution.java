@@ -27,7 +27,7 @@ public class CheckoutSolution {
         mapItems.put('O', new Item('O', 10, null));
         mapItems.put('P', new Item('P', 50, new SpecialOffer(new int[]{5}, new int[]{50})));
         mapItems.put('Q', new Item('Q', 30, new SpecialOffer(new int[]{3}, new int[]{10})));
-        
+        mapItems.put('R', new Item('R', 50, null));
     }
 
     public Integer checkout(String skus) {
@@ -68,10 +68,12 @@ public class CheckoutSolution {
         int freeB = basketItems.get(mapItems.get('E')) == null ? 0 : basketItems.get(mapItems.get('E')) / 2;
         int freeF = basketItems.get(mapItems.get('F')) == null ? 0 : basketItems.get(mapItems.get('F')) / 3;
         int freeN = basketItems.get(mapItems.get('N')) == null ? 0 : basketItems.get(mapItems.get('N')) / 3;
+        int freeQ = basketItems.get(mapItems.get('R')) == null ? 0 : basketItems.get(mapItems.get('R')) / 3;
 
         basketItems.computeIfPresent(mapItems.get('B'), (item, integer) -> integer - freeB);
         basketItems.computeIfPresent(mapItems.get('F'), (item, integer) -> integer - freeF);
         basketItems.computeIfPresent(mapItems.get('N'), (item, integer) -> integer - freeN);
+        basketItems.computeIfPresent(mapItems.get('Q'), (item, integer) -> integer - freeQ);
     }
 
     @AllArgsConstructor
@@ -113,6 +115,7 @@ public class CheckoutSolution {
         int[] priceReduction;
     }
 }
+
 
 
 
