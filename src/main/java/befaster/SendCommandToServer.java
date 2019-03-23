@@ -15,7 +15,7 @@ public class SendCommandToServer {
      *   From IDE:
      *      Run this file from the IDE.
      *
-     *   From command line:
+     *   From command line:deploy
      *      ./gradlew run
      *
      *   To run your unit tests locally:
@@ -67,3 +67,4 @@ public class SendCommandToServer {
     }
 
 }
+
