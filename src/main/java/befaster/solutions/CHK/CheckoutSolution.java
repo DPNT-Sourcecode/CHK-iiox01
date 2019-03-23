@@ -10,7 +10,7 @@ public class CheckoutSolution {
     private Map<Character, Item> mapItems = new HashMap<>();
 
     {
-        mapItems.put('A', new Item('A', 50, new SpecialOffer(new int[]{3, 5}, new int[]{130, 200})));
+        mapItems.put('A', new Item('A', 50, new SpecialOffer(new int[]{3, 5}, new int[]{20, 50})));
         mapItems.put('B', new Item('B', 30, new SpecialOffer(new int[]{2}, new int[]{15})));
         mapItems.put('C', new Item('C', 20, null));
         mapItems.put('D', new Item('D', 15, null));
@@ -91,9 +91,9 @@ public class CheckoutSolution {
                     if (numberOfDeals > 0)
                         amount -= item.specialOffer.minAmount[i];
                     int priceReduction = numberOfDeals * item.specialOffer.priceReduction[i];
-                    price += (item.price * amount) - priceReduction;
+                    price += (item.price * item.specialOffer.minAmount[i]) - priceReduction;
                 }
-                return price;
+                return price + (item.price * amount);
             }
             return item.price * amount;
         }
@@ -105,4 +105,3 @@ public class CheckoutSolution {
         int[] priceReduction;
     }
 }
-
