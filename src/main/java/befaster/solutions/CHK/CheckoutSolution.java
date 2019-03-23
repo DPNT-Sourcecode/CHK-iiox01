@@ -16,6 +16,8 @@ public class CheckoutSolution {
         mapItems.put('D', new Item('D', 15, null));
         mapItems.put('E', new Item('E', 40, null));
         mapItems.put('F', new Item('F', 10, null));
+        mapItems.put('G', new Item('G', 20, null));
+        mapItems.put('H', new Item('H', 10, null));
     }
 
     public Integer checkout(String skus) {
@@ -99,6 +101,7 @@ public class CheckoutSolution {
         int[] priceReduction;
     }
 }
+
 
 
 
