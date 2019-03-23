@@ -65,6 +65,7 @@ public class CheckoutSolution {
                 if (sb.charAt(i) == 'B') {
                     sb.replace(i, i + 1, "");
                     --counter;
+                    --i;
                     if (counter == 0)
                         return sb.toString();
                 }
@@ -108,5 +109,6 @@ public class CheckoutSolution {
         int[] priceReduction;
     }
 }
+
 
 
