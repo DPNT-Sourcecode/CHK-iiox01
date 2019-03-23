@@ -12,5 +12,3 @@ public class CheckoutSolutionTest {
         assert checkoutSolution.checkout(s) == 610;
     }
 }
-
-

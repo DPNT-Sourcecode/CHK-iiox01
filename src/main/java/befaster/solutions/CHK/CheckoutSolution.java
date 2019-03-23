@@ -109,6 +109,3 @@ public class CheckoutSolution {
         int[] priceReduction;
     }
 }
-
-
-
