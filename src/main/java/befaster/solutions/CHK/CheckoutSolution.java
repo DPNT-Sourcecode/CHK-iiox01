@@ -95,7 +95,6 @@ public class CheckoutSolution {
         int numberSitems = basketItems.get(mapItems.get('S')) == null ? 0 : basketItems.get(mapItems.get('S'));
         int numberXitems = basketItems.get(mapItems.get('X')) == null ? 0 : basketItems.get(mapItems.get('X'));
 
-        //int totalGroupItems = numberZitems + numberYitems + numberTitems + numberSitems + numberXitems;
         int priceToAdd = 0;
 
         while (numberZitems >= 3) {
@@ -194,9 +193,3 @@ public class CheckoutSolution {
         int[] priceReduction;
     }
 }
-
-
-
-
-
-
