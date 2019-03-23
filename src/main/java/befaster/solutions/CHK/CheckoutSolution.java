@@ -20,7 +20,7 @@ public class CheckoutSolution {
         mapItems.put('H', new Item('H', 10, new SpecialOffer(new int[]{5, 10}, new int[]{5, 20})));
         mapItems.put('I', new Item('I', 35, null));
         mapItems.put('J', new Item('J', 60, null));
-        mapItems.put('K', new Item('K', 70, new SpecialOffer(new int[]{2}, new int[]{10})));
+        mapItems.put('K', new Item('K', 70, new SpecialOffer(new int[]{2}, new int[]{20})));
         mapItems.put('L', new Item('L', 90, null));
         mapItems.put('M', new Item('M', 15, null));
         mapItems.put('N', new Item('N', 40, null));
@@ -193,4 +193,5 @@ public class CheckoutSolution {
         int[] priceReduction;
     }
 }
+
 
