@@ -10,5 +10,3 @@ public class CheckoutSolutionTest {
         assert checkoutSolution.checkout("AAAA") == 180;
     }
 }
-
-
