@@ -89,10 +89,11 @@ public class CheckoutSolution {
 
                 for (int i = bestOfferIndex; i >= 0; --i) {
                     int numberOfDeals = amount / item.specialOffer.minAmount[i];
-                    if (numberOfDeals > 0)
+                    if (numberOfDeals > 0) {
                         amount -= item.specialOffer.minAmount[i];
-                    int priceReduction = numberOfDeals * item.specialOffer.priceReduction[i];
-                    price += (item.price * item.specialOffer.minAmount[i]) - priceReduction;
+                        int priceReduction = numberOfDeals * item.specialOffer.priceReduction[i];
+                        price += (item.price * item.specialOffer.minAmount[i]) - priceReduction;
+                    }
                 }
                 return price + (item.price * amount);
             }
@@ -106,5 +107,6 @@ public class CheckoutSolution {
         int[] priceReduction;
     }
 }
+
 
 
