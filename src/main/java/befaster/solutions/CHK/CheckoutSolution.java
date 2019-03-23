@@ -93,8 +93,8 @@ public class CheckoutSolution {
                         do {
                             numberOfDeals--;
                             amount -= item.specialOffer.minAmount[i];
-                            int priceReduction = numberOfDeals * item.specialOffer.priceReduction[i];
-                            price += (item.price * item.specialOffer.minAmount[i]) - priceReduction;
+                            //int priceReduction = numberOfDeals * item.specialOffer.priceReduction[i];
+                            price += (item.price * item.specialOffer.minAmount[i]) - item.specialOffer.priceReduction[i];
                         } while (numberOfDeals > 0);
                     }
                 }
@@ -110,3 +110,4 @@ public class CheckoutSolution {
         int[] priceReduction;
     }
 }
+
