@@ -7,9 +7,9 @@ import java.util.Map;
 
 public class CheckoutSolution {
 
-    private static Map<Character, Item> mapItems = new HashMap<>();
+    private Map<Character, Item> mapItems = new HashMap<>();
 
-    static {
+    {
         mapItems.put('A', new Item(50, new SpecialOffer(3, 20)));
         mapItems.put('B', new Item(30, new SpecialOffer(2, 15)));
         mapItems.put('C', new Item(20, null));
@@ -27,7 +27,7 @@ public class CheckoutSolution {
         }
     }
 
-    private static Map<Item, Integer> parseSkus(String skus) throws Exception {
+    private Map<Item, Integer> parseSkus(String skus) throws Exception {
         Map<Item, Integer> basketItems = new HashMap<>();
         String[] arrSkus = skus.replace(" ", "").split(",");
         for (String sku : arrSkus)
@@ -42,7 +42,7 @@ public class CheckoutSolution {
     }
 
     @AllArgsConstructor
-    private static class Item {
+    static class Item {
         int price;
         SpecialOffer specialOffer;
 
@@ -62,10 +62,11 @@ public class CheckoutSolution {
     }
 
     @AllArgsConstructor
-    private static class SpecialOffer {
+    static class SpecialOffer {
         int minAmount;
         int priceReduction;
     }
 }
+
 
 
