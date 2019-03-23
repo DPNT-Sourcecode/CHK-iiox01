@@ -126,7 +126,7 @@ public class CheckoutSolution {
 
         while (numberZitems + numberYitems + numberTitems + numberSitems + numberXitems >= 3) {
             priceToAdd += 45;
-            numberXitems -= numberSitems - 3;
+            numberXitems -= numberZitems + numberYitems + numberTitems + numberSitems - 3;
             numberSitems = 0;
             numberTitems = 0;
             numberZitems = 0;
@@ -175,5 +175,6 @@ public class CheckoutSolution {
         int[] priceReduction;
     }
 }
+
 
 
