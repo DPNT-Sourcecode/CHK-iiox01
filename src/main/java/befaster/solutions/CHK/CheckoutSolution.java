@@ -101,36 +101,55 @@ public class CheckoutSolution {
         while (numberZitems >= 3) {
             priceToAdd += 45;
             numberZitems -= 3;
+            basketItems.compute(mapItems.get('Z'), (item, amount) -> amount -3);
         }
 
         while (numberZitems + numberYitems >= 3) {
             priceToAdd += 45;
-            numberYitems -= numberZitems - 3;
+            int reduceValue = numberZitems - 3;
+            numberYitems -=  reduceValue;
+            basketItems.compute(mapItems.get('Y'), (item, amount) -> amount - reduceValue);
             numberZitems = 0;
+            basketItems.compute(mapItems.get('Z'), (item, amount) -> 0);
         }
 
         while (numberZitems + numberYitems + numberTitems >= 3) {
             priceToAdd += 45;
-            numberTitems -= numberYitems + numberZitems - 3;
+            int reduceValue = numberYitems + numberZitems - 3;
+            numberTitems -= reduceValue;
+            basketItems.compute(mapItems.get('T'), (item, amount) -> amount - reduceValue);
             numberYitems = 0;
+            basketItems.compute(mapItems.get('Y'), (item, amount) -> 0);
             numberZitems = 0;
+            basketItems.compute(mapItems.get('Z'), (item, amount) -> 0);
         }
 
         while (numberZitems + numberYitems + numberTitems + numberSitems >= 3) {
             priceToAdd += 45;
-            numberSitems -= numberZitems + numberYitems + numberTitems - 3;
+            int reduceValue = numberZitems + numberYitems + numberTitems - 3;
+            numberSitems -= reduceValue;
+            basketItems.compute(mapItems.get('S'), (item, amount) -> amount - reduceValue);
             numberTitems = 0;
+            basketItems.compute(mapItems.get('T'), (item, amount) -> 0);
             numberZitems = 0;
+            basketItems.compute(mapItems.get('Z'), (item, amount) -> 0);
             numberYitems = 0;
+            basketItems.compute(mapItems.get('Y'), (item, amount) -> 0);
         }
 
         while (numberZitems + numberYitems + numberTitems + numberSitems + numberXitems >= 3) {
             priceToAdd += 45;
-            numberXitems -= numberZitems + numberYitems + numberTitems + numberSitems - 3;
+            int reduceValue = numberZitems + numberYitems + numberTitems + numberSitems - 3;
+            numberXitems -= reduceValue;
+            basketItems.compute(mapItems.get('X'), (item, amount) -> amount - reduceValue);
             numberSitems = 0;
+            basketItems.compute(mapItems.get('S'), (item, amount) -> 0);
             numberTitems = 0;
+            basketItems.compute(mapItems.get('T'), (item, amount) -> 0);
             numberZitems = 0;
+            basketItems.compute(mapItems.get('Z'), (item, amount) -> 0);
             numberYitems = 0;
+            basketItems.compute(mapItems.get('Y'), (item, amount) -> 0);
         }
 
         return priceToAdd;
@@ -175,6 +194,7 @@ public class CheckoutSolution {
         int[] priceReduction;
     }
 }
+
 
 
 
