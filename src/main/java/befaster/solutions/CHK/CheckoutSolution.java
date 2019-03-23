@@ -18,12 +18,12 @@ public class CheckoutSolution {
         mapItems.put('F', new Item('F', 10, null));
         mapItems.put('G', new Item('G', 20, null));
         mapItems.put('H', new Item('H', 10, new SpecialOffer(new int[]{5, 10}, new int[]{5, 20})));
-        mapItems.put('I', new Item('I', 30, null));
+        mapItems.put('I', new Item('I', 35, null));
         mapItems.put('J', new Item('J', 60, null));
         mapItems.put('K', new Item('K', 80, new SpecialOffer(new int[]{2}, new int[]{10})));
         mapItems.put('L', new Item('L', 90, null));
-        mapItems.put('M', new Item('M', 60, null));
-        mapItems.put('N', new Item('N', 60, null));
+        mapItems.put('M', new Item('M', 15, null));
+        mapItems.put('N', new Item('N', 40, null));
         mapItems.put('O', new Item('O', 10, null));
         mapItems.put('P', new Item('P', 50, new SpecialOffer(new int[]{5}, new int[]{50})));
         mapItems.put('Q', new Item('Q', 30, new SpecialOffer(new int[]{3}, new int[]{10})));
@@ -31,7 +31,7 @@ public class CheckoutSolution {
         mapItems.put('S', new Item('S', 30, null));
         mapItems.put('T', new Item('T', 20, null));
         mapItems.put('U', new Item('U', 40, null));
-        mapItems.put('V', new Item('V', 40, new SpecialOffer(new int[]{2, 3}, new int[]{10, 20})));
+        mapItems.put('V', new Item('V', 50, new SpecialOffer(new int[]{2, 3}, new int[]{10, 20})));
         mapItems.put('W', new Item('W', 20, null));
         mapItems.put('X', new Item('X', 90, null));
         mapItems.put('Y', new Item('Y', 10, null));
@@ -125,3 +125,4 @@ public class CheckoutSolution {
         int[] priceReduction;
     }
 }
+
