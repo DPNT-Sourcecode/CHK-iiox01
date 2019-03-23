@@ -35,8 +35,8 @@ public class CheckoutSolution {
                 throw new Exception();
             else {
                 Item item = mapItems.get(sku.charAt(0));
-                basketItems.putIfAbsent(item, 1);
                 basketItems.computeIfPresent(item, (keyItem, amount) -> ++amount);
+                basketItems.putIfAbsent(item, 1);
             }
         return basketItems;
     }
@@ -67,3 +67,4 @@ public class CheckoutSolution {
         int priceReduction;
     }
 }
+
