@@ -10,10 +10,10 @@ public class CheckoutSolution {
     private Map<Character, Item> mapItems = new HashMap<>();
 
     {
-        mapItems.put('A', new Item(50, new SpecialOffer(3, 20)));
-        mapItems.put('B', new Item(30, new SpecialOffer(2, 15)));
-        mapItems.put('C', new Item(20, null));
-        mapItems.put('D', new Item(15, null));
+        mapItems.put('A', new Item('A', 50, new SpecialOffer(3, 20)));
+        mapItems.put('B', new Item('B', 30, new SpecialOffer(2, 15)));
+        mapItems.put('C', new Item('C', 20, null));
+        mapItems.put('D', new Item('D', 15, null));
     }
 
     public Integer checkout(String skus) {
@@ -43,6 +43,7 @@ public class CheckoutSolution {
 
     @AllArgsConstructor
     static class Item {
+        char code;
         int price;
         SpecialOffer specialOffer;
 
@@ -52,7 +53,7 @@ public class CheckoutSolution {
                 return -1;
 
             if (item.specialOffer != null) {
-                int numberOfDeals = item.specialOffer.minAmount / amount;
+                int numberOfDeals = amount / item.specialOffer.minAmount;
                 int priceReduction = numberOfDeals * item.specialOffer.priceReduction;
                 return (item.price * amount) - priceReduction;
             }
@@ -67,4 +68,5 @@ public class CheckoutSolution {
         int priceReduction;
     }
 }
+
 
