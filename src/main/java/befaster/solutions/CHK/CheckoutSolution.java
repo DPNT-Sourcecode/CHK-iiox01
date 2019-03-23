@@ -23,8 +23,6 @@ public class CheckoutSolution {
         if (skus.isEmpty())
             return 0;
 
-        //skus = calculateFreeItems(skus);
-
         try {
             Map<Item, Integer> basketItems = parseSkus(skus);
             calculateFreeItems(basketItems);
@@ -52,28 +50,6 @@ public class CheckoutSolution {
             }
         return basketItems;
     }
-
-    /*private String calculateFreeItems(String items) {
-        int counter = 0;
-
-        for (int i = 0; i < items.length(); ++i)
-            if (items.charAt(i) == 'E')
-                counter++;
-
-        counter = counter / 2;
-        if (counter > 0) {
-            StringBuilder sb = new StringBuilder(items);
-            for (int i = 0; i < sb.length(); ++i)
-                if (sb.charAt(i) == 'B') {
-                    sb.replace(i, i + 1, "");
-                    --counter;
-                    --i;
-                    if (counter == 0)
-                        return sb.toString();
-                }
-        }
-        return items;
-    }*/
 
     private void calculateFreeItems(Map<Item, Integer> basketItems) {
 
@@ -123,5 +99,6 @@ public class CheckoutSolution {
         int[] priceReduction;
     }
 }
+
 
 
