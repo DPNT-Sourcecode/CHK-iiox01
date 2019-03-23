@@ -28,14 +28,14 @@ public class CheckoutSolution {
         mapItems.put('P', new Item('P', 50, new SpecialOffer(new int[]{5}, new int[]{50})));
         mapItems.put('Q', new Item('Q', 30, new SpecialOffer(new int[]{3}, new int[]{10})));
         mapItems.put('R', new Item('R', 50, null));
-        mapItems.put('S', new Item('S', 30, null));
+        mapItems.put('S', new Item('S', 20, null));
         mapItems.put('T', new Item('T', 20, null));
         mapItems.put('U', new Item('U', 40, null));
         mapItems.put('V', new Item('V', 50, new SpecialOffer(new int[]{2, 3}, new int[]{10, 20})));
         mapItems.put('W', new Item('W', 20, null));
-        mapItems.put('X', new Item('X', 90, null));
-        mapItems.put('Y', new Item('Y', 10, null));
-        mapItems.put('Z', new Item('Z', 50, null));
+        mapItems.put('X', new Item('X', 17, null));
+        mapItems.put('Y', new Item('Y', 20, null));
+        mapItems.put('Z', new Item('Z', 21, null));
     }
 
     public Integer checkout(String skus) {
@@ -194,6 +194,7 @@ public class CheckoutSolution {
         int[] priceReduction;
     }
 }
+
 
 
 
