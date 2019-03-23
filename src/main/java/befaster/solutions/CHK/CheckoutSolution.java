@@ -10,8 +10,8 @@ public class CheckoutSolution {
     private Map<Character, Item> mapItems = new HashMap<>();
 
     {
-        mapItems.put('A', new Item('A', 50, new SpecialOffer(3, 20)));
-        mapItems.put('B', new Item('B', 30, new SpecialOffer(2, 15)));
+        mapItems.put('A', new Item('A', 50, new SpecialOffer(new int[]{3, 5}, new int[]{130, 200})));
+        mapItems.put('B', new Item('B', 30, new SpecialOffer(new int[]{2}, new int[]{15})));
         mapItems.put('C', new Item('C', 20, null));
         mapItems.put('D', new Item('D', 15, null));
     }
@@ -20,6 +20,8 @@ public class CheckoutSolution {
 
         if (skus.isEmpty())
             return 0;
+
+        skus = calculateFreeItems(skus);
 
         try {
             Map<Item, Integer> basketItems = parseSkus(skus);
@@ -48,6 +50,27 @@ public class CheckoutSolution {
         return basketItems;
     }
 
+    private String calculateFreeItems(String items) {
+        int counter = 0;
+
+        for (int i = 0; i < items.length(); ++i)
+            if (items.charAt(i) == 'E')
+                counter++;
+
+        counter = counter / 2;
+        if (counter > 0) {
+            StringBuilder sb = new StringBuilder(items);
+            for (int i = 0; i < sb.length(); ++i)
+                if (sb.charAt(i) == 'B') {
+                    sb.replace(i, i + 1, "");
+                    --counter;
+                    if (counter == 0)
+                        return sb.toString();
+                }
+        }
+        return items;
+    }
+
     @AllArgsConstructor
     static class Item {
         char code;
@@ -60,18 +83,26 @@ public class CheckoutSolution {
                 return -1;
 
             if (item.specialOffer != null) {
-                int numberOfDeals = amount / item.specialOffer.minAmount;
-                int priceReduction = numberOfDeals * item.specialOffer.priceReduction;
-                return (item.price * amount) - priceReduction;
-            }
+                int price = 0;
+                int bestOfferIndex = item.specialOffer.minAmount.length - 1;
 
+                for (int i = bestOfferIndex; i > 0; --i) {
+                    int numberOfDeals = amount / item.specialOffer.minAmount[i];
+                    if (numberOfDeals > 0)
+                        amount -= item.specialOffer.minAmount[i];
+                    int priceReduction = numberOfDeals * item.specialOffer.priceReduction[i];
+                    price += (item.price * amount) - priceReduction;
+                }
+                return price;
+            }
             return item.price * amount;
         }
     }
 
     @AllArgsConstructor
     static class SpecialOffer {
-        int minAmount;
-        int priceReduction;
+        int[] minAmount;
+        int[] priceReduction;
     }
 }
+

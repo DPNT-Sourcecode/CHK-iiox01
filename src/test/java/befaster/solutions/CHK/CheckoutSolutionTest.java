@@ -7,6 +7,7 @@ public class CheckoutSolutionTest {
     @Test
     public void checkoutTest() {
         CheckoutSolution checkoutSolution = new CheckoutSolution();
-        assert checkoutSolution.checkout("AAAA") == 180;
+        assert checkoutSolution.checkout("AAAAA") == 200;
     }
 }
+
