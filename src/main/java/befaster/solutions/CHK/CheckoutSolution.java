@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 public class CheckoutSolution {
 
@@ -19,7 +18,10 @@ public class CheckoutSolution {
 
     public Integer checkout(String skus) {
         try {
-            Set<Item> basketItems = parseSkus(skus);
+            Map<Item, Integer> basketItems = parseSkus(skus);
+            int[] total = new int[1];
+            basketItems.forEach((item, amount) -> total[0] += Item.getCheckoutPrice(item, amount));
+            return total[0];
         } catch (Exception e) {
             return -1;
         }
@@ -34,9 +36,7 @@ public class CheckoutSolution {
             else {
                 Item item = mapItems.get(sku.charAt(0));
                 basketItems.putIfAbsent(item, 1);
-                basketItems.computeIfPresent(item, (item1, integer) -> {
-                    return
-                });
+                basketItems.computeIfPresent(item, (keyItem, amount) -> ++amount);
             }
 
     }
@@ -67,4 +67,5 @@ public class CheckoutSolution {
         int priceReduction;
     }
 }
+
 
