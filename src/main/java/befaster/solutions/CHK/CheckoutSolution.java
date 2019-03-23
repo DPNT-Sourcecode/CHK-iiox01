@@ -15,6 +15,7 @@ public class CheckoutSolution {
         mapItems.put('C', new Item('C', 20, null));
         mapItems.put('D', new Item('D', 15, null));
         mapItems.put('E', new Item('E', 40, null));
+        mapItems.put('F', new Item('F', 10, null));
     }
 
     public Integer checkout(String skus) {
@@ -26,7 +27,7 @@ public class CheckoutSolution {
 
         try {
             Map<Item, Integer> basketItems = parseSkus(skus);
-
+            calculateFreeItems(basketItems);
             int[] total = new int[1];
             basketItems.forEach((item, amount) -> total[0] += Item.getCheckoutPrice(item, amount));
             return total[0];
@@ -75,7 +76,12 @@ public class CheckoutSolution {
     }*/
 
     private void calculateFreeItems(Map<Item, Integer> basketItems) {
-        int free
+
+        int freeB = basketItems.get(mapItems.get('E')) / 2;
+        int freeF = basketItems.get(mapItems.get('F')) / 3;
+
+        basketItems.computeIfPresent(mapItems.get('B'), (item, integer) -> integer - freeB);
+        basketItems.computeIfPresent(mapItems.get('F'), (item, integer) -> integer - freeF);
     }
 
     @AllArgsConstructor
@@ -114,4 +120,3 @@ public class CheckoutSolution {
         int[] priceReduction;
     }
 }
-
