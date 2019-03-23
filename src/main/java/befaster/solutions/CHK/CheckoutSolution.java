@@ -46,9 +46,10 @@ public class CheckoutSolution {
         try {
             Map<Item, Integer> basketItems = parseSkus(skus);
             calculateFreeItems(basketItems);
+            int priceToAdd = calculateGroupDiscount(basketItems);
             int[] total = new int[1];
             basketItems.forEach((item, amount) -> total[0] += Item.getCheckoutPrice(item, amount));
-            return total[0];
+            return total[0] + priceToAdd;
         } catch (Exception e) {
             return -1;
         }
@@ -84,6 +85,49 @@ public class CheckoutSolution {
         basketItems.computeIfPresent(mapItems.get('M'), (item, integer) -> integer - freeM);
         basketItems.computeIfPresent(mapItems.get('Q'), (item, integer) -> integer - freeQ);
         basketItems.computeIfPresent(mapItems.get('U'), (item, integer) -> integer - freeU);
+    }
+
+    private int calculateGroupDiscount(Map<Item, Integer> basketItems) {
+
+        int numberZitems = basketItems.get(mapItems.get('Z')) == null ? 0 : basketItems.get(mapItems.get('Z'));
+        int numberYitems = basketItems.get(mapItems.get('Y')) == null ? 0 : basketItems.get(mapItems.get('Y'));
+        int numberTitems = basketItems.get(mapItems.get('T')) == null ? 0 : basketItems.get(mapItems.get('T'));
+        int numberSitems = basketItems.get(mapItems.get('S')) == null ? 0 : basketItems.get(mapItems.get('S'));
+        int numberXitems = basketItems.get(mapItems.get('X')) == null ? 0 : basketItems.get(mapItems.get('X'));
+
+        //int totalGroupItems = numberZitems + numberYitems + numberTitems + numberSitems + numberXitems;
+        int priceToAdd = 0;
+
+        while (numberZitems >= 3) {
+            priceToAdd += 45;
+            numberZitems -= 3;
+        }
+
+        while (numberZitems + numberYitems >= 3) {
+            priceToAdd += 45;
+            numberYitems -= numberZitems - 3;
+            numberZitems = 0;
+        }
+
+        while (numberYitems + numberTitems >= 3) {
+            priceToAdd += 45;
+            numberTitems -= numberYitems - 3;
+            numberYitems = 0;
+        }
+
+        while (numberTitems + numberSitems >= 3) {
+            priceToAdd += 45;
+            numberSitems -= numberTitems - 3;
+            numberTitems = 0;
+        }
+
+        while (numberSitems + numberXitems >= 3) {
+            priceToAdd += 45;
+            numberXitems -= numberSitems - 3;
+            numberSitems = 0;
+        }
+
+        return priceToAdd;
     }
 
     @AllArgsConstructor
@@ -125,3 +169,4 @@ public class CheckoutSolution {
         int[] priceReduction;
     }
 }
+

@@ -7,8 +7,9 @@ public class CheckoutSolutionTest {
     @Test
     public void checkoutTest() {
         CheckoutSolution checkoutSolution = new CheckoutSolution();
-        String s = "UUU";
+        String s = "STX";
         System.out.println(checkoutSolution.checkout(s));
-        assert checkoutSolution.checkout(s) == 680;
+        assert checkoutSolution.checkout(s) == 45;
     }
 }
+
