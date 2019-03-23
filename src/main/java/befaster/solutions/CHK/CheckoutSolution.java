@@ -92,6 +92,9 @@ public class CheckoutSolution {
 
         static int getCheckoutPrice(Item item, int amount) {
 
+            if (amount == 0)
+                return 0;
+
             if (item == null || amount < 1)
                 return -1;
 
@@ -120,4 +123,5 @@ public class CheckoutSolution {
         int[] priceReduction;
     }
 }
+
 
