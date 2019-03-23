@@ -22,10 +22,11 @@ public class CheckoutSolution {
         if (skus.isEmpty())
             return 0;
 
-        skus = calculateFreeItems(skus);
+        //skus = calculateFreeItems(skus);
 
         try {
             Map<Item, Integer> basketItems = parseSkus(skus);
+
             int[] total = new int[1];
             basketItems.forEach((item, amount) -> total[0] += Item.getCheckoutPrice(item, amount));
             return total[0];
@@ -51,7 +52,7 @@ public class CheckoutSolution {
         return basketItems;
     }
 
-    private String calculateFreeItems(String items) {
+    /*private String calculateFreeItems(String items) {
         int counter = 0;
 
         for (int i = 0; i < items.length(); ++i)
@@ -71,6 +72,10 @@ public class CheckoutSolution {
                 }
         }
         return items;
+    }*/
+
+    private void calculateFreeItems(Map<Item, Integer> basketItems) {
+        int free
     }
 
     @AllArgsConstructor
@@ -109,3 +114,4 @@ public class CheckoutSolution {
         int[] priceReduction;
     }
 }
+
