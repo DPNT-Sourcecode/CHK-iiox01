@@ -109,22 +109,28 @@ public class CheckoutSolution {
             numberZitems = 0;
         }
 
-        while (numberYitems + numberTitems >= 3) {
+        while (numberZitems + numberYitems + numberTitems >= 3) {
             priceToAdd += 45;
-            numberTitems -= numberYitems - 3;
+            numberTitems -= numberYitems + numberZitems - 3;
+            numberYitems = 0;
+            numberZitems = 0;
+        }
+
+        while (numberZitems + numberYitems + numberTitems + numberSitems >= 3) {
+            priceToAdd += 45;
+            numberSitems -= numberZitems + numberYitems + numberTitems - 3;
+            numberTitems = 0;
+            numberZitems = 0;
             numberYitems = 0;
         }
 
-        while (numberTitems + numberSitems >= 3) {
-            priceToAdd += 45;
-            numberSitems -= numberTitems - 3;
-            numberTitems = 0;
-        }
-
-        while (numberSitems + numberXitems >= 3) {
+        while (numberZitems + numberYitems + numberTitems + numberSitems + numberXitems >= 3) {
             priceToAdd += 45;
             numberXitems -= numberSitems - 3;
             numberSitems = 0;
+            numberTitems = 0;
+            numberZitems = 0;
+            numberYitems = 0;
         }
 
         return priceToAdd;
@@ -169,4 +175,5 @@ public class CheckoutSolution {
         int[] priceReduction;
     }
 }
+
 
